@@ -1,0 +1,240 @@
+{
+  "task": "XL-Sum Urdu: generate the article title from its one-sentence summary",
+  "model": "google/mt5-small",
+  "data": {
+    "source": "csebuetnlp/xlsum/data/urdu_XLSum_v2.0.tar.bz2",
+    "revision": "30fece425f9a3866e04321773ca7a80056d55ca6",
+    "min_title_words": 3,
+    "examples": {
+      "train": 67628,
+      "validation": 8454,
+      "test": 8454
+    }
+  },
+  "metric": "ROUGE with whitespace tokenization (rouge-score), mean over examples, 0-100",
+  "config": {
+    "epochs": 4.0,
+    "max_steps": -1,
+    "learning_rate": 5.6e-05,
+    "batch_size": 8,
+    "eval_batch_size": 8,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "precision": "fp32",
+    "max_source_length": 433,
+    "max_target_length": 70,
+    "generation_max_length": 71,
+    "num_beams": 1,
+    "best_model_metric": "validation rougeL_f1"
+  },
+  "train_token_lengths": {
+    "summary": {
+      "p50": 60,
+      "p95": 112,
+      "p99": 154,
+      "max": 433
+    },
+    "title": {
+      "p50": 16,
+      "p95": 34,
+      "p99": 45,
+      "max": 70
+    }
+  },
+  "baseline": {
+    "validation": {
+      "rouge1_precision": 14.022,
+      "rouge1_recall": 52.2665,
+      "rouge1_f1": 21.4039,
+      "rouge2_precision": 5.8534,
+      "rouge2_recall": 22.3484,
+      "rouge2_f1": 8.9437,
+      "rougeL_precision": 12.4545,
+      "rougeL_recall": 46.779,
+      "rougeL_f1": 19.0493,
+      "empty_predictions": 0,
+      "pred_words": 33.44,
+      "ref_words": 8.28
+    },
+    "test": {
+      "rouge1_precision": 14.1631,
+      "rouge1_recall": 52.0049,
+      "rouge1_f1": 21.5259,
+      "rouge2_precision": 6.0326,
+      "rouge2_recall": 22.6627,
+      "rouge2_f1": 9.1743,
+      "rougeL_precision": 12.613,
+      "rougeL_recall": 46.5985,
+      "rougeL_f1": 19.1998,
+      "empty_predictions": 0,
+      "pred_words": 33.03,
+      "ref_words": 8.32
+    }
+  },
+  "best_checkpoint": {
+    "epoch": 4.0,
+    "step": 33816
+  },
+  "validation": {
+    "loss": 2.016920328140259,
+    "rouge1_precision": 27.8717,
+    "rouge1_recall": 28.7439,
+    "rouge1_f1": 26.8543,
+    "rouge2_precision": 12.7505,
+    "rouge2_recall": 12.8715,
+    "rouge2_f1": 12.0628,
+    "rougeL_precision": 26.7927,
+    "rougeL_recall": 27.6326,
+    "rougeL_f1": 25.8178,
+    "empty_predictions": 0,
+    "pred_words": 8.78,
+    "ref_words": 8.28
+  },
+  "test": {
+    "rouge1_precision": 28.4655,
+    "rouge1_recall": 29.1129,
+    "rouge1_f1": 27.4043,
+    "rouge2_precision": 13.3434,
+    "rouge2_recall": 13.3538,
+    "rouge2_f1": 12.6201,
+    "rougeL_precision": 27.3034,
+    "rougeL_recall": 27.906,
+    "rougeL_f1": 26.2799,
+    "empty_predictions": 0,
+    "pred_words": 8.7,
+    "ref_words": 8.32,
+    "loss": 2.0168
+  },
+  "history": [
+    {
+      "epoch": 1.0,
+      "step": 8454,
+      "train_loss": 3.2568,
+      "loss": 2.1553962230682373,
+      "rouge1_precision": 26.3214,
+      "rouge1_recall": 27.3035,
+      "rouge1_f1": 25.284,
+      "rouge2_precision": 11.7042,
+      "rouge2_recall": 11.8266,
+      "rouge2_f1": 11.0019,
+      "rougeL_precision": 25.2598,
+      "rougeL_recall": 26.2268,
+      "rougeL_f1": 24.2787,
+      "empty_predictions": 0,
+      "pred_words": 8.84,
+      "ref_words": 8.28,
+      "runtime": 827.6885,
+      "samples_per_second": 10.214,
+      "steps_per_second": 1.277
+    },
+    {
+      "epoch": 2.0,
+      "step": 16908,
+      "train_loss": 2.5728,
+      "loss": 2.0714738368988037,
+      "rouge1_precision": 26.7757,
+      "rouge1_recall": 28.9016,
+      "rouge1_f1": 26.2977,
+      "rouge2_precision": 12.2521,
+      "rouge2_recall": 12.9079,
+      "rouge2_f1": 11.796,
+      "rougeL_precision": 25.7119,
+      "rougeL_recall": 27.7219,
+      "rougeL_f1": 25.2432,
+      "empty_predictions": 0,
+      "pred_words": 9.24,
+      "ref_words": 8.28,
+      "runtime": 479.1662,
+      "samples_per_second": 17.643,
+      "steps_per_second": 2.206
+    },
+    {
+      "epoch": 3.0,
+      "step": 25362,
+      "train_loss": 2.4426,
+      "loss": 2.0266315937042236,
+      "rouge1_precision": 27.5306,
+      "rouge1_recall": 28.75,
+      "rouge1_f1": 26.6717,
+      "rouge2_precision": 12.5943,
+      "rouge2_recall": 12.8491,
+      "rouge2_f1": 11.9641,
+      "rougeL_precision": 26.447,
+      "rougeL_recall": 27.6347,
+      "rougeL_f1": 25.6327,
+      "empty_predictions": 0,
+      "pred_words": 8.94,
+      "ref_words": 8.28,
+      "runtime": 518.6275,
+      "samples_per_second": 16.301,
+      "steps_per_second": 2.038
+    },
+    {
+      "epoch": 4.0,
+      "step": 33816,
+      "train_loss": 2.3891,
+      "loss": 2.016920328140259,
+      "rouge1_precision": 27.8717,
+      "rouge1_recall": 28.7439,
+      "rouge1_f1": 26.8543,
+      "rouge2_precision": 12.7505,
+      "rouge2_recall": 12.8715,
+      "rouge2_f1": 12.0628,
+      "rougeL_precision": 26.7927,
+      "rougeL_recall": 27.6326,
+      "rougeL_f1": 25.8178,
+      "empty_predictions": 0,
+      "pred_words": 8.78,
+      "ref_words": 8.28,
+      "runtime": 438.8926,
+      "samples_per_second": 19.262,
+      "steps_per_second": 2.408
+    }
+  ],
+  "runtime": {
+    "device": "NVIDIA GeForce RTX 2070 SUPER",
+    "train_seconds": 7313.3,
+    "train_steps": 33816,
+    "train_steps_per_second": 6.735,
+    "test_seconds": 530.8,
+    "peak_gpu_memory_gb": 6.21
+  },
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.23.0",
+    "datasets": "5.2.0"
+  },
+  "examples": [
+    {
+      "id": "150905_hangu_councillor_anp_blast_rh",
+      "summary": "پاکستان کے صوبہ خیبر پختونخوا کے جنوبی ضلع ہنگو میں سڑک کنارے بم دھماکے میں عوامی نیشنل پارٹی کے ضلعی کونسلرسمیت دو افراد ہلاک اور دو زخمی ہوئے ہیں۔",
+      "title": "ہنگو میں بم دھماکے میں اے این پی کے کونسلر سمیت دو ہلاک",
+      "prediction": "ہنگو: عوامی نیشنل پارٹی کے ضلعی کونسلرسمیت دو ہلاک"
+    },
+    {
+      "id": "151022_us_syria_moscow_criticism_rh",
+      "summary": "امریکہ نے شام کے صدر بشارالاسد کا ماسکو کے دورے پر ’والہانہ استقبال‘ کرنے پر شدید مذمت کی ہے۔",
+      "title": "بشار الاسد کا ماسکو میں ’پرتپاک استقبال،‘ امریکہ کی تنقید",
+      "prediction": "شام کے صدر بشارالاسد کا ماسکو پر شدید مذمت"
+    },
+    {
+      "id": "070601_bachan_land_lease_ns",
+      "summary": "ریاست اتر پردیش میں فیض آباد کی ایک ذیلی عدالت نے ضلع بارہ بنکی میں گرام سبھا کی ز مین بالی وڈ سٹار امیتابھ بچن کو پٹے (لیز) پر دینے کا حکم کالعدم قرار دیا ہے۔",
+      "title": "امیتابھ کے نام زمین کا پٹہ کالعدم",
+      "prediction": "امیتابھ بچن کو پٹے پر دینے کا حکم کالعدم"
+    },
+    {
+      "id": "130414_somalia_court_attack_zis",
+      "summary": "صومالیہ کے دارالحکومت موغادیشو میں بموں اور بندوقوں کے حملوں میں کم از کم 19 افراد مارے گئے ہیں۔",
+      "title": "صومالیہ میں خونریز حملوں میں 19 افراد ہلاک",
+      "prediction": "موغادیشو میں بموں اور بندوقوں کے حملے میں 19 افراد مارے گئے"
+    },
+    {
+      "id": "071204_nanjing_massacre_named_sz",
+      "summary": "چین نے ایسے تیرہ ہزار افراد کی ایک فہرست جاری کی ہے جن کے متعلق اس کہنا ہے کہ انہیں جاپانی فوج نےانیس سو سینتیس کے ننجنگ قتل عام میں ہلاک کیا تھا۔",
+      "title": "ننجنگ قتل عام کی فہرست جاری",
+      "prediction": "چین نے تیرہ ہزار افراد کی فہرست جاری کر دی"
+    }
+  ]
+}
