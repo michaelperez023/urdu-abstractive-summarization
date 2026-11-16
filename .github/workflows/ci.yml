@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # The tests build a tiny tokenizer and a tiny model in memory and never download a model
+      # or the dataset.
+      HF_HUB_OFFLINE: "1"
+      HF_DATASETS_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          python-version: "3.12"
+      - name: Install (with the CPU build of torch for the model tests)
+        run: |
+          uv sync --locked
+          uv pip install "torch>=2.6,<3" --index-url https://download.pytorch.org/whl/cpu
+      - name: Lint
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+      - name: Test
+        run: uv run pytest
