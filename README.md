@@ -5,8 +5,8 @@ Urdu news article from its short summary, using the Urdu part of the
 [XL-Sum](https://github.com/csebuetnlp/xl-sum) dataset. On the test split the fine-tuned model
 reaches a ROUGE-L F1 of 26.28, against 19.20 for using the summary itself as the title.
 
-CIS 6930 (Spring 2023) team project, Team 32 "Absolute Sum": Ammar Amjad, Mohammad Anas and
-Michael Perez.
+CIS 6930 (Spring 2023) team project, Team 32 "Absolute Sum": Ammar Amjad, Mohammad Uzair Fasih,
+Mohammad Anas and Michael Perez.
 
 ## Task
 
